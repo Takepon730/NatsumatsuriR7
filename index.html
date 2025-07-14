@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杉田地区 子どもの集い 夏まつり</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+
+        body {
+            font-family: 'Mochiy Pop P One', 'Arial', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('./assets/back.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10; /* Ensure content is above decorative images */
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .main-title-area {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .main-title-area .title-back {
+            width: 100%;
+            height: auto;
+            animation: bounceIn 1.5s ease-out;
+        }
+
+        .main-title-area .title-front {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%; /* Adjust as needed */
+            height: auto;
+            animation: fadeInScale 1.5s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        .day-free-img { /* This class is no longer used for day.free.png, but keeping for now */
+            width: 150px; /* Adjust size as needed */
+            height: auto;
+            margin-top: 10px; /* Adjust to ensure visibility */
+            animation: bounceIn 1.5s ease-out 1s forwards;
+            opacity: 1; /* Ensure it's visible */
+            z-index: 11; /* Ensure it's above other elements */
+            position: relative; /* Needed for z-index to work */
+        }
+
+        .nitiji-img {
+            position: absolute;
+            top: -50px; /* Adjust vertical position */
+            left: 0; /* Position to the left */
+            height: 180px; /* Even Larger size */
+            animation: bounceIn 1s ease-out 2s forwards;
+            opacity: 0;
+            z-index: 12;
+        }
+
+        .sankahi-img {
+            position: absolute;
+            top: -50px; /* Adjust vertical position */
+            right: 0; /* Position to the right */
+            height: 180px; /* Even Larger size */
+            animation: bounceIn 1s ease-out 2.5s forwards;
+            opacity: 0;
+            z-index: 12;
+        }
+
+        h2 {
+            color: #ff6347; /* Tomato red for a more playful feel */
+            font-size: 2.2em;
+            border-left: 10px solid #ff6347;
+            padding-left: 15px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        h3 {
+            color: #ffa500; /* Orange for a brighter look */
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .hero-section p {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #ff4500; /* OrangeRed for a more vibrant look */
+            margin-bottom: 15px;
+            animation: slideIn 1s ease-out forwards;
+            opacity: 0;
+            text-shadow: 2px 2px 0px #fff, 4px 4px 0px rgba(0,0,0,0.3); /* White outline with black shadow */
+        }
+        .hero-section p:nth-of-type(1) { animation-delay: 0.8s; }
+        .hero-section p:nth-of-type(2) { animation-delay: 1.3s; }
+        .hero-section p:nth-of-type(3) { animation-delay: 1.8s; }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #ecf0f1; /* Light gray */
+            margin-bottom: 12px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 6px solid #9b59b6; /* Amethyst */
+            display: flex;
+            align-items: center;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        ul li:nth-child(1) { animation-delay: 0.2s; }
+        ul li:nth-child(2) { animation-delay: 0.4s; }
+        ul li:nth-child(3) { animation-delay: 0.6s; }
+        ul li:nth-child(4) { animation-delay: 0.8s; }
+        ul li:nth-child(5) { animation-delay: 1.0s; }
+        ul li:nth-child(6) { animation-delay: 1.2s; }
+
+        ul li img {
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .important-note {
+            background-color: #ffeaa7; /* Light orange */
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px dashed #fdcb6e; /* Darker orange */
+            margin-top: 25px;
+            font-weight: bold;
+            color: #d35400; /* Pumpkin */
+            animation: bounceIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .content-image {
+            height: 50px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Decorative elements */
+        .decorative-img {
+            position: fixed; /* Fixed position relative to viewport */
+            opacity: 1; /* Changed from 0.7 to 1 */
+            animation: floatAndFade 5s infinite ease-in-out alternate;
+            z-index: 0; /* Behind the main content */
+        }
+        .decorative-img.dansi1 { top: 10%; left: 5%; height: 100px; animation-delay: 0s; }
+        .decorative-img.josi1 { top: 25%; right: 8%; height: 80px; animation-delay: 1s; }
+        .decorative-img.happi { bottom: 15%; left: 12%; height: 90px; animation-delay: 2s; }
+        .decorative-img.dansi2 { top: 50%; left: 2%; height: 70px; animation-delay: 3s; }
+        .decorative-img.josi2 { bottom: 5%; right: 10%; height: 110px; animation-delay: 4s; }
+
+        @keyframes floatAndFade {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(5deg); opacity: 0.9; }
+            100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="./assets/nitiji.png" alt="開催日時" class="nitiji-img">
+            <img src="./assets/sankahi.png" alt="参加費" class="sankahi-img">
+            <div class="main-title-area">
+                <img src="./assets/title_back.png" alt="タイトル背景" class="title-back">
+                <img src="./assets/title.png" alt="令和7年度 子どもの集い 夏まつり" class="title-front">
+            </div>
+        </header>
+
+        <!-- ヒーローセクション (Hero Section) -->
+        <section class="hero-section">
+            <p>杉田地区のこどもたち、今年も夏まつりがやってくる！</p>
+            <p>楽しいゲームと美味しいかき氷で、夏の思い出を作ろう！</p>
+            <p class="important-note">今年は事前申込不要！当日そのまま会場へGO！</p>
+        </section>
+
+        <!-- イベント概要 (Event Overview) -->
+        <section>
+            <h2>イベント概要</h2>
+            <ul>
+                <li><strong>イベント名:</strong> 令和7年度 子どもの集い 夏まつり</li>
+                <li><strong>開催日時:</strong> 令和7年7月26日(土) 9:30～11:00頃 (9:30から開会式を行います)</li>
+                <li><strong>場所:</strong> 杉田住民センター体育室</li>
+                <li><strong>参加費:</strong> 無料！</li>
+                <li><strong>対象:</strong> 杉田地区のこどもたち</li>
+            </ul>
+        </section>
+
+        <!-- 楽しいコンテンツ (Fun Contents) -->
+        <section>
+            <h2>楽しいゲームがいっぱい！</h2>
+            <ul>
+                <li><img src="./assets/ball.png" alt="スーパーボール" class="content-image">スーパーボールすくい</li>
+                <li><img src="./assets/juu.png" alt="しゃてき" class="content-image">しゃてき</li>
+                <li><img src="./assets/mizu.png" alt="水ヨーヨー" class="content-image">水ヨーヨーつり</li>
+                <li><img src="./assets/ball.png" alt="キックターゲット" class="content-image">キックターゲット</li>
+                <li><img src="./assets/wanage.png" alt="輪投げ" class="content-image">輪投げ</li>
+                <li>その他、楽しいゲームが盛りだくさん！</li>
+            </ul>
+            <h3>追加情報:</h3>
+            <p><img src="./assets/kaigoori.png" alt="かき氷" class="content-image">かき氷＆<img src="./assets/wata.png" alt="わたあめ" class="content-image">わたあめも用意してま～す☆</p>
+            <p><img src="./assets/pato.png" alt="パトカー" class="content-image">パトカーや<img src="./assets/syoubou.png" alt="消防車" class="content-image">消防車の車両展示もあるよ！</p>
+            <p style="font-size: 0.9em; color: #e74c3c;">※出動要請のある場合は、残念ながら見ることができません。ご了承ください。</p>
+        </section>
+
+        <!-- 参加方法 (How to Participate) -->
+        <section>
+            <h2>今年は事前申込なしで参加OK！</h2>
+            <p>今年度は事前に申し込む必要はありません。当日直接会場へお越しください。</p>
+            <p class="important-note">ただし、景品やかき氷などは数に限りがありますので、ご了承ください。</p>
+            <p>混雑した際は、譲り合って楽しく参加しましょう！</p>
+        </section>
+
+        <!-- ご案内・注意事項 (Information / Notes) -->
+        <section>
+            <h2>ご来場にあたって</h2>
+            <ul>
+                <li>当日は、上履き・タオル・飲み物などご持参ください。</li>
+                <li>ゲームに参加するための「引換券」は当日お渡しします。</li>
+                <li>なお、体育室には冷房がありませんので、熱中症に注意してください。</li>
+            </ul>
+        </section>
+
+        <!-- 主催 (Organizer) -->
+        <section>
+            <h2>主催</h2>
+            <p>杉田地区青少年育成推進協議会</p>
+        </section>
+
+        <!-- フッター (Footer) -->
+        <footer>
+            <p>&copy; 杉田地区青少年育成推進協議会</p>
+        </footer>
+    </div>
+
+    <!-- Decorative floating images (outside container for fixed positioning) -->
+    <img src="./assets/dansi1.png" class="decorative-img dansi1"> 
+    <img src="./assets/josi1.png" class="decorative-img josi1"> 
+    <img src="./assets/happi.png" class="decorative-img happi"> 
+    <img src="./assets/dansi2.png" class="decorative-img dansi2"> 
+    <img src="./assets/josi2.png" class="decorative-img josi2"> 
+
+</body>
+</html>
